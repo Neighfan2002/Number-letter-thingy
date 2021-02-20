@@ -30,31 +30,41 @@ def TRANSLATE(NUMBER):
     if (NUMBER < MILLION):
         if NUMBER % THOUSAND == 0:
             return TRANSLATE(NUMBER // THOUSAND) + 'thousand'
-        else:
+        elif NUMBER % THOUSAND >= 100:
             return TRANSLATE(NUMBER // THOUSAND) + 'thousand' + TRANSLATE(NUMBER % THOUSAND)
+        else:
+            return TRANSLATE(NUMBER // THOUSAND) + 'thousandand' + TRANSLATE(NUMBER % THOUSAND)
 
     if (NUMBER < BILLION):
         if (NUMBER % MILLION) == 0:
             return TRANSLATE(NUMBER // MILLION) + 'million'
-        else:
+        elif NUMBER % MILLION >= 100:
             return TRANSLATE(NUMBER // MILLION) + 'million' + TRANSLATE(NUMBER % MILLION)
+        else:
+            return TRANSLATE(NUMBER // MILLION) + 'millionand' + TRANSLATE(NUMBER % MILLION)
 
     if (NUMBER < TRILLION):
         if (NUMBER % BILLION) == 0:
             return TRANSLATE(NUMBER // BILLION) + 'billion'
-        else:
+        elif (NUMBER % BILLION) >= 100:
             return TRANSLATE(NUMBER // BILLION) + 'billion' + TRANSLATE(NUMBER % BILLION)
+        else:
+            return TRANSLATE(NUMBER // BILLION) + 'billionand' + TRANSLATE(NUMBER % BILLION)
 
     if (NUMBER < QUADRILLION):
-        if (NUMBER % BILLION) == 0:
+        if (NUMBER % TRILLION) == 0:
             return TRANSLATE(NUMBER // TRILLION) + 'trillion'
-        else:
+        elif (NUMBER % TRILLION) >= 100:
             return TRANSLATE(NUMBER // TRILLION) + 'trillion' + TRANSLATE(NUMBER % TRILLION)
+        else:
+            return TRANSLATE(NUMBER // TRILLION) + 'trillionand' + TRANSLATE(NUMBER % TRILLION)
 
     if (NUMBER % QUADRILLION == 0):
         return TRANSLATE(NUMBER // QUADRILLION) + 'quadrillion'
-    else:
+    elif (NUMBER % QUADRILLION) >= 100:
         return TRANSLATE(NUMBER // QUADRILLION) + 'quadrillion' + TRANSLATE(NUMBER % QUADRILLION)
+    else:
+        return TRANSLATE(NUMBER // QUADRILLION) + 'quadrillionand' + TRANSLATE(NUMBER % QUADRILLION)
 
 def do():
     start = TRANSLATE(int(input('NUMBER: ')))
@@ -68,6 +78,7 @@ def do():
             
 while True:
     do()
+    print('')
 
 
 
